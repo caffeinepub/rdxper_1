@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 9,
+  "summary": "Web app called 'RDXper' for generating academic research papers based on user-provided topics. Features user authentication, AI-powered research paper generation following academic structure (8000-10000 words), outline creation with user confirmation, and paper download capability.",
+  "architectural_notes": [
+    "Web application architecture required",
+    "AI/LLM integration needed for research paper generation (8000-10000 words)",
+    "User authentication and session management required",
+    "Document generation and formatting engine for academic papers",
+    "Statistical analysis visualization capabilities (Chi-square, ANOVA, charts/tables)",
+    "APA citation formatting system",
+    "PDF generation library integration required for document export"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-user-authentication-system-with-sign-in-and-login-functionality-using-internet-identity",
+      "title": "Implement user authentication system with sign-in and login functionality using Internet Identity",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-research-topic-input-form-where-authenticated-users-can-enter-their-research-topic",
+      "title": "Create a research topic input form where authenticated users can enter their research topic",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-generated-outline-to-user-and-present-a-confirmation-dialog-asking-whether-they-have-content-for-the-research-paper-and-whether-the-ai-should-generate-it-fully",
+      "title": "Display generated outline to user and present a confirmation dialog asking whether they have content for the research paper and whether the AI should generate it fully",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-include-author-field-in-the-generated-paper-using-the-authenticated-user-s-name-or-principal-identifier",
+      "title": "Include Author field in the generated paper using the authenticated user's name or principal identifier",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-research-paper-download-functionality-allowing-users-to-download-the-complete-generated-paper-in-a-standard-document-format",
+      "title": "Implement research paper download functionality allowing users to download the complete generated paper in a standard document format",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-a-professional-and-academic-visual-theme-for-rdxper-with-a-clean-scholarly-aesthetic-suitable-for-research-and-academic-work-using-typography-and-colors-that-convey-credibility-and-focus",
+      "title": "Design a professional and academic visual theme for RDXper with a clean, scholarly aesthetic suitable for research and academic work, using typography and colors that convey credibility and focus",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-logo-image-element-img-tag-from-the-button-component-in-the-header-navigation-located-at-xpath-html-1-body-1-div-1-div-1-header-1-div-1-div-1-button-1-img-1",
+      "title": "Remove the logo image element (img tag) from the button component in the header navigation located at XPath /html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/div[1]/button[1]/img[1]",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-modify-the-downloadhelper-ts-formatpaper-function-to-structure-the-downloaded-document-according-to-the-user-specified-template-format-including-proper-document-formatting-section-hierarchy-and-styling-conventions-that-match-the-reference-template-provided-by-the-user",
+      "title": "Modify the downloadHelper.ts formatPaper function to structure the downloaded document according to the user-specified template format, including proper document formatting, section hierarchy, and styling conventions that match the reference template provided by the user",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-text-file-download-in-downloadbutton-tsx-with-pdf-generation-functionality-that-exports-the-research-paper-as-a-pdf-document",
+      "title": "Replace the current text file download in DownloadButton.tsx with PDF generation functionality that exports the research paper as a PDF document",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-format-the-pdf-document-to-match-the-structure-and-styling-of-the-uploaded-research-paper-template-preserving-the-document-hierarchy-section-formatting-typography-conventions-and-layout-patterns-from-the-reference-template",
+      "title": "Format the PDF document to match the structure and styling of the uploaded research paper template, preserving the document hierarchy, section formatting, typography conventions, and layout patterns from the reference template",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-downloadhelper-ts-utility-to-support-pdf-generation-while-maintaining-the-existing-formatpaper-function-s-template-based-formatting-logic",
+      "title": "Update the downloadHelper.ts utility to support PDF generation while maintaining the existing formatPaper function's template-based formatting logic",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-2",
+      "summary": "Download research paper as PDF format instead of current format",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "RDXper",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

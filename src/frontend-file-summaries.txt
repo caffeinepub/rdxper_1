@@ -1,0 +1,22 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router configuration for Landing, Dashboard, and Paper routes wrapped in Layout component.",
+  "frontend/src/main.tsx": "Application entry point with QueryClient, InternetIdentity, ThemeProvider, and Sonner toast notifications configured.",
+  "frontend/src/components/Layout.tsx": "Main layout wrapper with header containing navigation button (text only), navigation links, auth button, and footer with attribution.",
+  "frontend/src/components/Navigation.tsx": "Navigation component with Dashboard and My Paper links, highlighting active route.",
+  "frontend/src/components/AuthButton.tsx": "Authentication button component handling Internet Identity sign-in/sign-out with loading states.",
+  "frontend/src/components/ProtectedRoute.tsx": "Route protection wrapper that redirects unauthenticated users to landing page.",
+  "frontend/src/pages/Landing.tsx": "Landing page with hero section, feature cards, and call-to-action for unauthenticated users.",
+  "frontend/src/pages/Dashboard.tsx": "Protected dashboard page with research topic form and saved papers list.",
+  "frontend/src/pages/GeneratedPaper.tsx": "Protected page displaying the full generated research paper with loading and error states, importing usePaperData from useQueries.",
+  "frontend/src/components/ResearchTopicForm.tsx": "Form component for entering research topic and triggering paper generation with sample data.",
+  "frontend/src/components/PaperList.tsx": "Component displaying saved papers status with view button or empty state.",
+  "frontend/src/components/PaperView.tsx": "Comprehensive paper display component showing all 16 academic sections with proper formatting.",
+  "frontend/src/components/PaperMetadata.tsx": "Component displaying paper title and formatted author principal.",
+  "frontend/src/components/DownloadButton.tsx": "Button component that triggers PDF download of research papers by opening a print dialog with formatted content, allowing users to save as PDF through their browser.",
+  "frontend/src/components/LoadingStates.tsx": "Reusable skeleton loading components for forms and paper views.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching paper data, checking saved status, and saving papers to backend.",
+  "frontend/src/utils/downloadHelper.ts": "Utility functions for formatting and downloading research papers, including text file export and PDF generation via browser print dialog with all 12 sections properly structured.",
+  "frontend/src/index.css": "Global styles with academic color palette using OKLCH, deep scholarly blues and warm gold accents for light/dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with academic theme colors, serif/sans font families, and custom shadows.",
+  "frontend/src/utils/pdfFormatter.ts": "Utility that generates print-optimized HTML for research papers with academic formatting, proper typography, and print-specific CSS for PDF generation via browser print dialog."
+}

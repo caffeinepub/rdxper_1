@@ -1,0 +1,62 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-21T12:19:37.592Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-27",
+        "summary": "Replace the current text file download in DownloadButton.tsx with PDF generation functionality that exports the research paper as a PDF document",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/package.json",
+          "frontend/src/components/DownloadButton.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/DownloadButton.tsx"
+        ]
+      },
+      {
+        "id": "REQ-28",
+        "summary": "Format the PDF document to match the structure and styling of the uploaded research paper template, preserving the document hierarchy, section formatting, typography conventions, and layout patterns from the reference template",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/utils/pdfFormatter.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/utils/pdfFormatter.ts"
+        ]
+      },
+      {
+        "id": "REQ-29",
+        "summary": "Update the downloadHelper.ts utility to support PDF generation while maintaining the existing formatPaper function's template-based formatting logic",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/utils/downloadHelper.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/utils/downloadHelper.ts"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/DownloadButton.tsx",
+    "frontend/src/utils/downloadHelper.ts",
+    "frontend/src/utils/pdfFormatter.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

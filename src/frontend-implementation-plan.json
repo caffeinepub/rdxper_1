@@ -1,0 +1,61 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Enable PDF download with formatting matching uploaded research paper template",
+  "requirements": [
+    {
+      "id": "REQ-27",
+      "summary": "Replace text file download with PDF generation functionality in DownloadButton component",
+      "acceptanceCriteria": [
+        "Clicking the download button generates and downloads a PDF file instead of a .txt file",
+        "The PDF file has a .pdf extension and appropriate MIME type",
+        "PDF generation handles all research paper sections without data loss"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/package.json",
+          "operation": "modify",
+          "description": "Add jsPDF library as a dependency to enable client-side PDF generation functionality"
+        },
+        {
+          "path": "frontend/src/components/DownloadButton.tsx",
+          "operation": "modify",
+          "description": "Replace downloadPaper function call with new downloadPaperAsPDF function to generate and download PDF files instead of text files. Update button label and toast messages to reflect PDF download. Ensure all 12 research paper sections are passed to the PDF generation utility"
+        }
+      ]
+    },
+    {
+      "id": "REQ-28",
+      "summary": "Format PDF document to match uploaded research paper template structure and styling",
+      "acceptanceCriteria": [
+        "PDF document structure matches the uploaded research paper template format",
+        "Section headings, numbering, and hierarchy follow the template conventions",
+        "Typography (fonts, sizes, spacing) matches the reference template styling",
+        "Page layout and margins are consistent with the template"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/pdfFormatter.ts",
+          "operation": "create",
+          "description": "Create PDF formatting utility that analyzes the uploaded research paper template (available in assets) to extract formatting conventions including section hierarchy, heading styles, typography (font families, sizes, weights), spacing patterns, and page layout settings. Implement template-matching logic that applies these extracted styles to the generated PDF document"
+        }
+      ]
+    },
+    {
+      "id": "REQ-29",
+      "summary": "Update downloadHelper utility to support PDF generation while preserving template-based formatting",
+      "acceptanceCriteria": [
+        "downloadHelper.ts includes PDF generation capability",
+        "The formatPaper function's template formatting is preserved and applied to PDF output",
+        "All 12 research paper sections are correctly rendered in the PDF"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/downloadHelper.ts",
+          "operation": "modify",
+          "description": "Add downloadPaperAsPDF function that uses jsPDF library to generate PDF documents. Integrate with pdfFormatter utility to apply template-based formatting. Preserve the existing formatPaper function and its logic. Ensure all 12 sections (abstract, introduction, government framework, factors affecting, comparative analysis, objectives, literature review, methodology, data analysis, results, discussion, policy recommendations, conclusion, citations) are correctly formatted and included in the PDF output with proper section numbering and hierarchy"
+        }
+      ]
+    }
+  ]
+}

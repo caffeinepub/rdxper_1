@@ -1,0 +1,74 @@
+{
+  "kind": "build_request",
+  "title": "Enable PDF download with formatting matching uploaded research paper template",
+  "projectName": "RDXper",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-27",
+      "text": "Replace the current text file download in DownloadButton.tsx with PDF generation functionality that exports the research paper as a PDF document",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-current"
+        ],
+        "quotes": [
+          "I want to download the document as pdf"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking the download button generates and downloads a PDF file instead of a .txt file",
+        "The PDF file has a .pdf extension and appropriate MIME type",
+        "PDF generation handles all research paper sections without data loss"
+      ]
+    },
+    {
+      "id": "REQ-28",
+      "text": "Format the PDF document to match the structure and styling of the uploaded research paper template, preserving the document hierarchy, section formatting, typography conventions, and layout patterns from the reference template",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-current"
+        ],
+        "quotes": [
+          "the document downloaded should be similar to the uploaded research paper"
+        ]
+      },
+      "acceptanceCriteria": [
+        "PDF document structure matches the uploaded research paper template format",
+        "Section headings, numbering, and hierarchy follow the template conventions",
+        "Typography (fonts, sizes, spacing) matches the reference template styling",
+        "Page layout and margins are consistent with the template"
+      ]
+    },
+    {
+      "id": "REQ-29",
+      "text": "Update the downloadHelper.ts utility to support PDF generation while maintaining the existing formatPaper function's template-based formatting logic",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-current"
+        ]
+      },
+      "acceptanceCriteria": [
+        "downloadHelper.ts includes PDF generation capability",
+        "The formatPaper function's template formatting is preserved and applied to PDF output",
+        "All 12 research paper sections are correctly rendered in the PDF"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not change the backend ResearchPaper type or main.mo actor methods",
+    "Preserve the existing formatPaper template-based formatting logic from downloadHelper.ts",
+    "Maintain compatibility with the current DownloadButton.tsx component interface"
+  ],
+  "nonGoals": [
+    "Changing the research paper data structure or backend storage",
+    "Modifying the authentication system or user interface beyond the download button",
+    "Adding new research paper sections or fields"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
