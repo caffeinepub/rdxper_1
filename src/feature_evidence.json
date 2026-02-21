@@ -2,56 +2,21 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-replace-the-current-text-file-download-in-downloadbutton-tsx-with-pdf-generation-functionality-that-exports-the-research-paper-as-a-pdf-document",
-      "featureTitle": "Replace the current text file download in DownloadButton.tsx with PDF generation functionality that exports the research paper as a PDF document",
+      "featureId": "feature-update-the-loading-state-messages-in-researchtopicform-tsx-to-reflect-the-new-4000-5000-word-target-length-during-paper-generation",
+      "featureTitle": "Update the loading state messages in ResearchTopicForm.tsx to reflect the new 4000-5000 word target length during paper generation",
       "files": [
-        "frontend/src/components/DownloadButton.tsx"
+        "frontend/src/components/ResearchTopicForm.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0"
       ],
       "testIds": [
-        "REQ-27"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-format-the-pdf-document-to-match-the-structure-and-styling-of-the-uploaded-research-paper-template-preserving-the-document-hierarchy-section-formatting-typography-conventions-and-layout-patterns-from-the-reference-template",
-      "featureTitle": "Format the PDF document to match the structure and styling of the uploaded research paper template, preserving the document hierarchy, section formatting, typography conventions, and layout patterns from the reference template",
-      "files": [
-        "frontend/src/utils/pdfFormatter.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-28"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-downloadhelper-ts-utility-to-support-pdf-generation-while-maintaining-the-existing-formatpaper-function-s-template-based-formatting-logic",
-      "featureTitle": "Update the downloadHelper.ts utility to support PDF generation while maintaining the existing formatPaper function's template-based formatting logic",
-      "files": [
-        "frontend/src/utils/downloadHelper.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-29"
+        "REQ-49"
       ],
       "confidence": "high"
     }

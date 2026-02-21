@@ -68,7 +68,7 @@ export default function PaperView({ paper }: PaperViewProps) {
           {/* Factors Affecting */}
           <section>
             <h2 className="text-2xl font-bold mb-4">3. Factors Affecting the Issue</h2>
-            <p className="text-justify leading-relaxed">{paper.factorsAffecting}</p>
+            <p className="text-justify leading-relaxed">{paper.factors}</p>
           </section>
 
           <Separator />
@@ -84,13 +84,7 @@ export default function PaperView({ paper }: PaperViewProps) {
           {/* Objectives */}
           <section>
             <h2 className="text-2xl font-bold mb-4">5. Objectives of the Study</h2>
-            <ul className="list-decimal list-inside space-y-2">
-              {paper.objectives.map((objective, index) => (
-                <li key={index} className="leading-relaxed">
-                  {objective}
-                </li>
-              ))}
-            </ul>
+            <p className="text-justify leading-relaxed">{paper.objectives}</p>
           </section>
 
           <Separator />
@@ -154,13 +148,9 @@ export default function PaperView({ paper }: PaperViewProps) {
           {/* Citations */}
           <section>
             <h2 className="text-2xl font-bold mb-4">References</h2>
-            <ul className="space-y-2">
-              {paper.citations.map((citation, index) => (
-                <li key={index} className="text-sm leading-relaxed pl-6 -indent-6">
-                  {citation}
-                </li>
-              ))}
-            </ul>
+            <div className="text-sm leading-relaxed whitespace-pre-wrap">
+              {paper.citations}
+            </div>
           </section>
         </CardContent>
       </Card>

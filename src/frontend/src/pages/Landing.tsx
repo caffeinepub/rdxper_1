@@ -29,21 +29,10 @@ export default function Landing() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <div className="flex justify-center mb-6">
-              <img
-                src="/assets/generated/rdxper-logo.dim_256x256.png"
-                alt="RDXper Logo"
-                className="h-24 w-24"
-              />
-            </div>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
               Generate Academic Research Papers with{' '}
               <span className="text-primary">RDXper</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Transform your research topics into comprehensive, professionally structured academic papers
-              following rigorous scholarly standards.
-            </p>
             <div className="pt-4">
               <Button size="lg" onClick={login} disabled={isLoggingIn} className="text-lg px-8 py-6">
                 {isLoggingIn ? 'Signing In...' : 'Get Started'}

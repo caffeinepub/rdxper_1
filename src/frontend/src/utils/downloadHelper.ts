@@ -47,7 +47,7 @@ export function formatPaperForDownload(paper: ResearchPaper): string {
   // 4. Factors Affecting the Issue
   sections.push('4. FACTORS AFFECTING THE ISSUE');
   sections.push('');
-  sections.push(paper.factorsAffecting);
+  sections.push(paper.factors);
   sections.push('');
   
   // 5. Comparative Analysis
@@ -59,9 +59,7 @@ export function formatPaperForDownload(paper: ResearchPaper): string {
   // 6. Objectives of the Study
   sections.push('6. OBJECTIVES OF THE STUDY');
   sections.push('');
-  paper.objectives.forEach((obj, i) => {
-    sections.push(`   ${i + 1}. ${obj}`);
-  });
+  sections.push(paper.objectives);
   sections.push('');
   
   // 7. Methodology
@@ -105,10 +103,8 @@ export function formatPaperForDownload(paper: ResearchPaper): string {
   sections.push('');
   sections.push('REFERENCES');
   sections.push('');
-  paper.citations.forEach((citation, i) => {
-    sections.push(`[${i + 1}] ${citation}`);
-    sections.push('');
-  });
+  sections.push(paper.citations);
+  sections.push('');
   
   return sections.join('\n');
 }

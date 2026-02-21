@@ -13,48 +13,95 @@ import type { Principal } from '@icp-sdk/core/principal';
 export interface ResearchPaper {
   'governmentFramework' : string,
   'title' : string,
+  'topic' : string,
+  'wordCount' : bigint,
   'policyRecommendations' : string,
   'dataAnalysis' : string,
+  'createdAt' : bigint,
   'conclusion' : string,
   'results' : string,
   'author' : string,
   'keywords' : Array<string>,
   'introduction' : string,
   'comparativeAnalysis' : string,
-  'factorsAffecting' : string,
   'literatureReview' : string,
+  'factors' : string,
   'abstract' : string,
   'discussion' : string,
-  'citations' : Array<string>,
+  'citations' : string,
   'methodology' : string,
-  'objectives' : Array<string>,
+  'objectives' : string,
+}
+export interface TransformationInput {
+  'context' : Uint8Array,
+  'response' : http_request_result,
+}
+export interface TransformationOutput {
+  'status' : bigint,
+  'body' : Uint8Array,
+  'headers' : Array<http_header>,
+}
+export interface http_header { 'value' : string, 'name' : string }
+export interface http_request_result {
+  'status' : bigint,
+  'body' : Uint8Array,
+  'headers' : Array<http_header>,
 }
 export interface _SERVICE {
+  'createResearchPaper' : ActorMethod<
+    [
+      string,
+      string,
+      string,
+      Array<string>,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+    ],
+    ResearchPaper
+  >,
   'downloadResearchPaper' : ActorMethod<[], string>,
+  'getAccessHistory' : ActorMethod<[], Array<bigint>>,
+  'getApiKey' : ActorMethod<[], string>,
   'getResearchPaper' : ActorMethod<[], ResearchPaper>,
   'getResearchPaperFields' : ActorMethod<
     [],
     {
       'governmentFramework' : string,
       'title' : string,
+      'topic' : string,
+      'wordCount' : bigint,
       'policyRecommendations' : string,
       'dataAnalysis' : string,
+      'createdAt' : bigint,
       'conclusion' : string,
       'results' : string,
       'author' : string,
       'keywords' : Array<string>,
       'introduction' : string,
       'comparativeAnalysis' : string,
-      'factorsAffecting' : string,
       'literatureReview' : string,
+      'factors' : string,
       'abstract' : string,
       'discussion' : string,
-      'citations' : Array<string>,
+      'citations' : string,
       'methodology' : string,
-      'objectives' : Array<string>,
+      'objectives' : string,
     }
   >,
   'isResearchPaperSaved' : ActorMethod<[], boolean>,
+  'recordAccess' : ActorMethod<[], undefined>,
   'saveResearchPaper' : ActorMethod<
     [
       string,
@@ -65,7 +112,6 @@ export interface _SERVICE {
       string,
       string,
       string,
-      Array<string>,
       string,
       string,
       string,
@@ -73,10 +119,13 @@ export interface _SERVICE {
       string,
       string,
       string,
-      Array<string>,
+      string,
+      string,
+      string,
     ],
     undefined
   >,
+  'transform' : ActorMethod<[TransformationInput], TransformationOutput>,
 }
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];

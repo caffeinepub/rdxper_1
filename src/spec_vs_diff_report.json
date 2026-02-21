@@ -1,40 +1,24 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-21T12:19:37.589Z",
-  "summary": "The diff implements PDF download functionality by generating print-optimized HTML and using the browser's print dialog to save as PDF. All three requirements (REQ-27, REQ-28, REQ-29) are substantially implemented with proper formatting, section structure, and template styling matching academic research paper conventions. All 12 research paper sections are rendered correctly.",
+  "generatedAt": "2026-02-21T16:21:11.696Z",
+  "summary": "The implementation successfully replaces Google Gemini with OpenAI GPT-4 integration, updates word count targets to 4000-5000 words in both backend and frontend, and includes migration logic to remove deprecated Gemini fields. All four requirements (REQ-46, REQ-47, REQ-48, REQ-49) are addressed with evidence in the diff.",
   "missing_requirements": [],
   "hallucinated_features": [
     {
-      "description": "Implementation uses browser print dialog (window.print()) instead of direct PDF generation",
-      "reason": "REQ-27 specifies 'PDF generation functionality that exports the research paper as a PDF document' and AC states 'generates and downloads a PDF file'. The implementation opens a print dialog requiring user interaction to save as PDF, rather than directly generating and downloading a PDF file programmatically.",
+      "description": "Added migration.mo module to handle data migration from old actor state (removing Gemini-specific fields like geminiApiEndpoint and googleApiKey) to new actor state",
+      "reason": "The BuildRequest does not specify any migration or data transformation requirements. The constraints mention preserving architecture and functionality, but do not request migration logic for removing old API configuration fields.",
       "evidence": [
-        "frontend/src/utils/downloadHelper.ts",
-        "frontend/src/components/DownloadButton.tsx"
-      ]
-    },
-    {
-      "description": "Toast notification displays 'Opening print dialog - save as PDF to download' message",
-      "reason": "This user-facing message about the print dialog was not requested in the BuildRequest. The requirement was for direct PDF download, not a print dialog workflow.",
-      "evidence": [
-        "frontend/src/components/DownloadButton.tsx"
-      ]
-    },
-    {
-      "description": "Error handling for popup blocking with specific user message",
-      "reason": "The BuildRequest did not specify error handling for popup blocking scenarios. This is additional functionality beyond what was requested.",
-      "evidence": [
-        "frontend/src/components/DownloadButton.tsx",
-        "frontend/src/utils/downloadHelper.ts"
+        "backend/migration.mo"
       ]
     }
   ],
-  "confidence": 0.85,
+  "confidence": 0.92,
   "changed_files": [
+    "backend/main.mo",
+    "backend/migration.mo",
     "frontend-file-summaries.txt",
-    "frontend/src/components/DownloadButton.tsx",
-    "frontend/src/utils/downloadHelper.ts",
-    "frontend/src/utils/pdfFormatter.ts",
+    "frontend/src/components/ResearchTopicForm.tsx",
     "project_state.json"
   ]
 }

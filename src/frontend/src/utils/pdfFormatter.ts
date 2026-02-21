@@ -70,21 +70,14 @@ export function generatePrintableHTML(paper: ResearchPaper): string {
     }
     
     .objectives {
-      margin-left: 20px;
-    }
-    
-    .objectives li {
-      margin-bottom: 5px;
+      text-align: justify;
+      margin-bottom: 10px;
+      white-space: pre-wrap;
     }
     
     .references {
       margin-top: 20px;
-    }
-    
-    .reference-item {
-      margin-bottom: 8px;
-      text-indent: -20px;
-      padding-left: 20px;
+      white-space: pre-wrap;
     }
     
     @media print {
@@ -122,15 +115,13 @@ export function generatePrintableHTML(paper: ResearchPaper): string {
   <p>${paper.governmentFramework}</p>
   
   <h2>4. FACTORS AFFECTING THE ISSUE</h2>
-  <p>${paper.factorsAffecting}</p>
+  <p>${paper.factors}</p>
   
   <h2>5. COMPARATIVE ANALYSIS</h2>
   <p>${paper.comparativeAnalysis}</p>
   
   <h2>6. OBJECTIVES OF THE STUDY</h2>
-  <ol class="objectives">
-    ${paper.objectives.map(obj => `<li>${obj}</li>`).join('\n    ')}
-  </ol>
+  <div class="objectives">${paper.objectives}</div>
   
   <h2>7. METHODOLOGY</h2>
   <p>${paper.methodology}</p>
@@ -153,11 +144,7 @@ export function generatePrintableHTML(paper: ResearchPaper): string {
   <div class="separator"></div>
   
   <h2>REFERENCES</h2>
-  <div class="references">
-    ${paper.citations.map((citation, i) => `
-    <div class="reference-item">[${i + 1}] ${citation}</div>
-    `).join('\n    ')}
-  </div>
+  <div class="references">${paper.citations}</div>
 </body>
 </html>
   `.trim();

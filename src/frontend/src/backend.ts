@@ -89,52 +89,95 @@ export class ExternalBlob {
         return this;
     }
 }
+export interface TransformationInput {
+    context: Uint8Array;
+    response: http_request_result;
+}
+export interface TransformationOutput {
+    status: bigint;
+    body: Uint8Array;
+    headers: Array<http_header>;
+}
 export interface ResearchPaper {
     governmentFramework: string;
     title: string;
+    topic: string;
+    wordCount: bigint;
     policyRecommendations: string;
     dataAnalysis: string;
+    createdAt: bigint;
     conclusion: string;
     results: string;
     author: string;
     keywords: Array<string>;
     introduction: string;
     comparativeAnalysis: string;
-    factorsAffecting: string;
     literatureReview: string;
+    factors: string;
     abstract: string;
     discussion: string;
-    citations: Array<string>;
+    citations: string;
     methodology: string;
-    objectives: Array<string>;
+    objectives: string;
+}
+export interface http_header {
+    value: string;
+    name: string;
+}
+export interface http_request_result {
+    status: bigint;
+    body: Uint8Array;
+    headers: Array<http_header>;
 }
 export interface backendInterface {
+    createResearchPaper(title: string, topic: string, abstract: string, keywords: Array<string>, introduction: string, governmentFramework: string, factors: string, comparativeAnalysis: string, objectives: string, literatureReview: string, methodology: string, dataAnalysis: string, results: string, discussion: string, policyRecommendations: string, conclusion: string, citations: string, author: string): Promise<ResearchPaper>;
     downloadResearchPaper(): Promise<string>;
+    getAccessHistory(): Promise<Array<bigint>>;
+    getApiKey(): Promise<string>;
     getResearchPaper(): Promise<ResearchPaper>;
     getResearchPaperFields(): Promise<{
         governmentFramework: string;
         title: string;
+        topic: string;
+        wordCount: bigint;
         policyRecommendations: string;
         dataAnalysis: string;
+        createdAt: bigint;
         conclusion: string;
         results: string;
         author: string;
         keywords: Array<string>;
         introduction: string;
         comparativeAnalysis: string;
-        factorsAffecting: string;
         literatureReview: string;
+        factors: string;
         abstract: string;
         discussion: string;
-        citations: Array<string>;
+        citations: string;
         methodology: string;
-        objectives: Array<string>;
+        objectives: string;
     }>;
     isResearchPaperSaved(): Promise<boolean>;
-    saveResearchPaper(title: string, author: string, abstract: string, keywords: Array<string>, introduction: string, governmentFramework: string, factorsAffecting: string, comparativeAnalysis: string, objectives: Array<string>, literatureReview: string, methodology: string, dataAnalysis: string, results: string, discussion: string, policyRecommendations: string, conclusion: string, citations: Array<string>): Promise<void>;
+    recordAccess(): Promise<void>;
+    saveResearchPaper(title: string, topic: string, abstract: string, keywords: Array<string>, introduction: string, governmentFramework: string, factors: string, comparativeAnalysis: string, objectives: string, literatureReview: string, methodology: string, dataAnalysis: string, results: string, discussion: string, policyRecommendations: string, conclusion: string, citations: string, author: string): Promise<void>;
+    transform(input: TransformationInput): Promise<TransformationOutput>;
 }
 export class Backend implements backendInterface {
     constructor(private actor: ActorSubclass<_SERVICE>, private _uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, private _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, private processError?: (error: unknown) => never){}
+    async createResearchPaper(arg0: string, arg1: string, arg2: string, arg3: Array<string>, arg4: string, arg5: string, arg6: string, arg7: string, arg8: string, arg9: string, arg10: string, arg11: string, arg12: string, arg13: string, arg14: string, arg15: string, arg16: string, arg17: string): Promise<ResearchPaper> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.createResearchPaper(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.createResearchPaper(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17);
+            return result;
+        }
+    }
     async downloadResearchPaper(): Promise<string> {
         if (this.processError) {
             try {
@@ -146,6 +189,34 @@ export class Backend implements backendInterface {
             }
         } else {
             const result = await this.actor.downloadResearchPaper();
+            return result;
+        }
+    }
+    async getAccessHistory(): Promise<Array<bigint>> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getAccessHistory();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getAccessHistory();
+            return result;
+        }
+    }
+    async getApiKey(): Promise<string> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getApiKey();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getApiKey();
             return result;
         }
     }
@@ -166,21 +237,24 @@ export class Backend implements backendInterface {
     async getResearchPaperFields(): Promise<{
         governmentFramework: string;
         title: string;
+        topic: string;
+        wordCount: bigint;
         policyRecommendations: string;
         dataAnalysis: string;
+        createdAt: bigint;
         conclusion: string;
         results: string;
         author: string;
         keywords: Array<string>;
         introduction: string;
         comparativeAnalysis: string;
-        factorsAffecting: string;
         literatureReview: string;
+        factors: string;
         abstract: string;
         discussion: string;
-        citations: Array<string>;
+        citations: string;
         methodology: string;
-        objectives: Array<string>;
+        objectives: string;
     }> {
         if (this.processError) {
             try {
@@ -209,17 +283,45 @@ export class Backend implements backendInterface {
             return result;
         }
     }
-    async saveResearchPaper(arg0: string, arg1: string, arg2: string, arg3: Array<string>, arg4: string, arg5: string, arg6: string, arg7: string, arg8: Array<string>, arg9: string, arg10: string, arg11: string, arg12: string, arg13: string, arg14: string, arg15: string, arg16: Array<string>): Promise<void> {
+    async recordAccess(): Promise<void> {
         if (this.processError) {
             try {
-                const result = await this.actor.saveResearchPaper(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
+                const result = await this.actor.recordAccess();
                 return result;
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
-            const result = await this.actor.saveResearchPaper(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
+            const result = await this.actor.recordAccess();
+            return result;
+        }
+    }
+    async saveResearchPaper(arg0: string, arg1: string, arg2: string, arg3: Array<string>, arg4: string, arg5: string, arg6: string, arg7: string, arg8: string, arg9: string, arg10: string, arg11: string, arg12: string, arg13: string, arg14: string, arg15: string, arg16: string, arg17: string): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.saveResearchPaper(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.saveResearchPaper(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17);
+            return result;
+        }
+    }
+    async transform(arg0: TransformationInput): Promise<TransformationOutput> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.transform(arg0);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.transform(arg0);
             return result;
         }
     }
